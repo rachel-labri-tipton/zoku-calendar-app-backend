@@ -1,0 +1,35 @@
+{
+  "name": "zoku-calendar-app-backend",
+  "version": "1.0.0",
+  "description": "A calendar app built with JavaScript frameworks",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/app.js",
+    "dev": "nodemon --watch src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rachel-labri-tipton/zoku-calendar-app-backend.git"
+  },
+  "author": "rachel l'abri tipton",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rachel-labri-tipton/zoku-calendar-app-backend/issues"
+  },
+  "homepage": "https://github.com/rachel-labri-tipton/zoku-calendar-app-backend#readme",
+  "devDependencies": {
+    "body-parser": "^2.2.0",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.1",
+    "nodemon": "^3.1.10",
+    "sequelize-cli": "^6.6.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "pg": "^8.16.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.7"
+  }
+}
