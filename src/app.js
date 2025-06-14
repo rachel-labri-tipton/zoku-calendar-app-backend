@@ -10,12 +10,12 @@ app.use(express.json());
 // Import routes
 const authRoutes = require('./routes/auth');
 const eventRoutes = require('./routes/events');
-const todoListRoutes = require('./routes/todoLists');
+const todoListRoutes = require('./routes/todos');
 
 // Use routes
 app.use('/auth', authRoutes);
 app.use('/events', eventRoutes);
-app.use('/todoLists', todoListRoutes);
+app.use('/todos', todoListRoutes);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
