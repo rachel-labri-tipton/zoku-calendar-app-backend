@@ -1,0 +1,119 @@
+const express = require('express');
+const router = express.Router();
+const { TodoList, Todo } = require('../../models');
+
+// Create TodoList with Todos
+router.post('/', async (req, res) => {
+  try {
+    const { title, description, color, todos } = req.body;
+    
+    const todoList = await TodoList.create({
+      title,
+      description,
+      color,
+      userId: req.userId
+    });
+
+    if (todos && todos.length > 0) {
+      const todoItems = todos.map(todo => ({
+        ...todo,
+        todoListId: todoList.id,
+        userId: req.userId
+      }));
+      await Todo.bulkCreate(todoItems);
+    }
+
+    const createdList = await TodoList.findOne({
+      where: { id: todoList.id },
+      include: [{
+        model: Todo,
+        as: 'todos'
+      }]
+    });
+
+    res.status(201).json(createdList);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
+// Get all TodoLists with their Todos
+router.get('/', async (req, res) => {
+  try {
+    const todoLists = await TodoList.findAll({
+      where: { userId: req.userId },
+      include: [{
+        model: Todo,
+        as: 'todos',
+        order: [['order', 'ASC']]
+      }],
+      order: [['createdAt', 'DESC']]
+    });
+    res.json(todoLists);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Get single TodoList with its Todos
+router.get('/:id', async (req, res) => {
+  try {
+    const todoList = await TodoList.findOne({
+      where: { 
+        id: req.params.id,
+        userId: req.userId
+      },
+      include: [{
+        model: Todo,
+        as: 'todos',
+        order: [['order', 'ASC']]
+      }]
+    });
+    if (!todoList) {
+      return res.status(404).json({ error: 'TodoList not found' });
+    }
+    res.json(todoList);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Update TodoList
+router.put('/:id', async (req, res) => {
+  try {
+    const todoList = await TodoList.findOne({
+      where: { 
+        id: req.params.id,
+        userId: req.userId
+      }
+    });
+    if (!todoList) {
+      return res.status(404).json({ error: 'TodoList not found' });
+    }
+    await todoList.update(req.body);
+    res.json(todoList);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
+// Delete TodoList and all associated Todos
+router.delete('/:id', async (req, res) => {
+  try {
+    const todoList = await TodoList.findOne({
+      where: { 
+        id: req.params.id,
+        userId: req.userId
+      }
+    });
+    if (!todoList) {
+      return res.status(404).json({ error: 'TodoList not found' });
+    }
+    await todoList.destroy();
+    res.status(204).send();
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+module.exports = router;
