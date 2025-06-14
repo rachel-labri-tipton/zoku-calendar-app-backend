@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "postgres",
-    "password": "",
-    "database": "",
+    "password": "password123",
+    "database": "dragonflyiterations",
     "host": "localhost",
     "dialect": "postgres"
   },

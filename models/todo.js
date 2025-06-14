@@ -1,30 +1,70 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Todo extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
-      // define association here
+      Todo.belongsTo(models.User, {
+        foreignKey: 'userId',
+        as: 'creator'
+      });
+      Todo.belongsTo(models.TodoList, {
+        foreignKey: 'todoListId',
+        as: 'todoList'
+      });
     }
   }
+
   Todo.init({
-    title: DataTypes.STRING,
-    description: DataTypes.TEXT,
-    dueDate: DataTypes.DATE,
-    priority: DataTypes.ENUM,
-    status: DataTypes.ENUM,
-    todoListId: DataTypes.UUID,
-    userId: DataTypes.UUID,
-    order: DataTypes.INTEGER
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      primaryKey: true
+    },
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
+    dueDate: {
+      type: DataTypes.DATE,
+      allowNull: true
+    },
+    priority: {
+      type: DataTypes.ENUM('low', 'medium', 'high'),
+      defaultValue: 'medium'
+    },
+    status: {
+      type: DataTypes.ENUM('pending', 'in_progress', 'completed'),
+      defaultValue: 'pending'
+    },
+    todoListId: {
+      type: DataTypes.UUID,
+      allowNull: true,
+      references: {
+        model: 'TodoLists',
+        key: 'id'
+      }
+    },
+    userId: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      references: {
+        model: 'Users',
+        key: 'id'
+      }
+    },
+    order: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    }
   }, {
     sequelize,
     modelName: 'Todo',
   });
+
   return Todo;
 };
