@@ -1,26 +1,50 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class TodoList extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
-      // define association here
+      TodoList.belongsTo(models.User, {
+        foreignKey: 'userId',
+        as: 'creator'
+      });
+      TodoList.hasMany(models.Todo, {
+        foreignKey: 'todoListId',
+        as: 'todos'
+      });
     }
   }
+
   TodoList.init({
-    title: DataTypes.STRING,
-    description: DataTypes.TEXT,
-    color: DataTypes.STRING,
-    userId: DataTypes.UUID
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      primaryKey: true
+    },
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
+    color: {
+      type: DataTypes.STRING,
+      defaultValue: '#1976d2'
+    },
+    userId: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      references: {
+        model: 'Users',
+        key: 'id'
+      }
+    }
   }, {
     sequelize,
     modelName: 'TodoList',
   });
+
   return TodoList;
 };

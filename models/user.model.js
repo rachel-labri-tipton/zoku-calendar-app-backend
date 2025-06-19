@@ -40,7 +40,11 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.Todo, {
       foreignKey: 'userId',
       as: 'todos'
-    });// define associations here
+    });
+    User.hasOne(models.Settings, {
+        foreignKey: 'userId',
+        as: 'settings'
+      });// define associations here
   };
 
   return User;
