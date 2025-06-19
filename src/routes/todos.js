@@ -2,6 +2,26 @@ const express = require('express');
 const router = express.Router();
 const { TodoList, Todo } = require('../../models');
 
+
+// Create empty TodoList
+router.post('/empty', async (req, res) => {
+  try {
+    const { title, description, color } = req.body;
+    
+    const todoList = await TodoList.create({
+      title,
+      description,
+      color,
+      userId: req.userId
+    });
+
+    res.status(201).json(todoList);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
+
 // Create TodoList with Todos
 router.post('/', async (req, res) => {
   try {
@@ -77,6 +97,8 @@ router.get('/:id', async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
+
 
 // Update TodoList
 router.put('/:id', async (req, res) => {
