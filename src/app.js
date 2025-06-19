@@ -11,11 +11,13 @@ app.use(express.json());
 const authRoutes = require('./routes/auth');
 const eventRoutes = require('./routes/events');
 const todoListRoutes = require('./routes/todos');
+const settingsRoutes = require('./routes/settings');
 
 // Use routes
 app.use('/auth', authRoutes);
 app.use('/events', eventRoutes);
 app.use('/todos', todoListRoutes);
+app.use('/settings', settingsRoutes);
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
