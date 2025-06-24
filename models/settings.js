@@ -1,5 +1,6 @@
 'use strict';
 const { Model } = require('sequelize');
+const { generateAvatarUrl } = require('../src/utils/avatarGenerator');
 
 module.exports = (sequelize, DataTypes) => {
   class Settings extends Model {
@@ -8,6 +9,11 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'userId',
         as: 'user'
       });
+    }
+
+    async getDefaultAvatar() {
+      const user = await this.getUser();
+      return generateAvatarUrl(user?.name);
     }
   }
 
@@ -20,6 +26,14 @@ module.exports = (sequelize, DataTypes) => {
     theme: {
       type: DataTypes.STRING,
       defaultValue: 'light'
+    },
+    avatar: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      get() {
+        const storedValue = this.getDataValue('avatar');
+        return storedValue || generateAvatarUrl(this.user?.name);
+      }
     },
     notifications: {
       type: DataTypes.BOOLEAN,
@@ -57,5 +71,13 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'Settings',
   });
 
+  // Hook to set default avatar when creating settings
+  Settings.beforeCreate(async (settings, options) => {
+    if (!settings.avatar) {
+      const user = await settings.getUser();
+      settings.avatar = generateAvatarUrl(user?.name);
+    }
+  });
+
   return Settings;
-}
+};
