@@ -2,40 +2,43 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Settings', {
+    await queryInterface.createTable('Events', {
       id: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
         primaryKey: true
       },
-      theme: {
+      title: {
         type: Sequelize.STRING,
-        defaultValue: 'light'
+        allowNull: false
       },
-      notifications: {
+      description: {
+        type: Sequelize.TEXT,
+        allowNull: true
+      },
+      startDate: {
+        type: Sequelize.DATE,
+        allowNull: false
+      },
+      endDate: {
+        type: Sequelize.DATE,
+        allowNull: false
+      },
+      location: {
+        type: Sequelize.STRING,
+        allowNull: true
+      },
+      isAllDay: {
         type: Sequelize.BOOLEAN,
-        defaultValue: true
+        defaultValue: false
       },
-      language: {
+      color: {
         type: Sequelize.STRING,
-        defaultValue: 'en'
-      },
-      timezone: {
-        type: Sequelize.STRING,
-        defaultValue: 'UTC'
-      },
-      startOfWeek: {
-        type: Sequelize.INTEGER,
-        defaultValue: 0
-      },
-      avatar: {
-        type: Sequelize.STRING,
-        defaultValue: '/avatars/default.png'
+        defaultValue: '#1976d2'
       },
       userId: {
         type: Sequelize.UUID,
         allowNull: false,
-        unique: true,
         references: {
           model: 'Users',
           key: 'id'
@@ -52,9 +55,12 @@ module.exports = {
         type: Sequelize.DATE
       }
     });
+
+    // Add index for userId
+    await queryInterface.addIndex('Events', ['userId']);
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Settings');
+    await queryInterface.dropTable('Events');
   }
 };

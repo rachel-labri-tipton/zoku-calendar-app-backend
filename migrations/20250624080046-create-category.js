@@ -2,40 +2,41 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Settings', {
+    await queryInterface.createTable('Categories', {
       id: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
         primaryKey: true
       },
-      theme: {
+      name: {
         type: Sequelize.STRING,
-        defaultValue: 'light'
+        allowNull: false
       },
-      notifications: {
+      color: {
+        type: Sequelize.STRING
+      },
+      isDefault: {
         type: Sequelize.BOOLEAN,
-        defaultValue: true
+        defaultValue: false
       },
-      language: {
-        type: Sequelize.STRING,
-        defaultValue: 'en'
+      goalHours: {
+        type: Sequelize.FLOAT,
+        allowNull: true
       },
-      timezone: {
-        type: Sequelize.STRING,
-        defaultValue: 'UTC'
+      weeklyGoal: {
+        type: Sequelize.FLOAT,
+        allowNull: true
       },
-      startOfWeek: {
-        type: Sequelize.INTEGER,
-        defaultValue: 0
+      monthlyGoal: {
+        type: Sequelize.FLOAT,
+        allowNull: true
       },
-      avatar: {
-        type: Sequelize.STRING,
-        defaultValue: '/avatars/default.png'
+      notes: {
+        type: Sequelize.TEXT
       },
       userId: {
         type: Sequelize.UUID,
         allowNull: false,
-        unique: true,
         references: {
           model: 'Users',
           key: 'id'
@@ -52,9 +53,11 @@ module.exports = {
         type: Sequelize.DATE
       }
     });
+
+    await queryInterface.addIndex('Categories', ['userId']);
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Settings');
+    await queryInterface.dropTable('Categories');
   }
 };

@@ -30,7 +30,7 @@ module.exports = {
       },
       avatar: {
         type: Sequelize.STRING,
-        defaultValue: '/avatars/default.png'
+        allowNull: true
       },
       userId: {
         type: Sequelize.UUID,
