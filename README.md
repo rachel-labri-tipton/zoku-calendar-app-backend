@@ -39,7 +39,59 @@ erDiagram
 
 ## Architecture
 
-[Insert system architecture diagram]
+```mermaid
+graph TD
+    subgraph "Frontend - Next.js"
+        A[Web Client] --> B[Next.js Pages]
+        B --> C[React Components]
+        C --> D[State Management]
+        D --> E[API Client]
+    end
+
+    subgraph "Backend - Express"
+        F[API Routes] --> G[Controllers]
+        G --> H[Services]
+        H --> I[Models]
+        I --> J[(PostgreSQL Database)]
+    end
+
+    subgraph "Authentication"
+        K[JWT Auth] --> F
+        K --> A
+    end
+
+    subgraph "External Services"
+        L[Railway PostgreSQL] --> J
+    end
+
+    E --> |HTTP/HTTPS| F
+```
+
+### Architecture Components
+
+#### Frontend Layer
+- **Web Client**: Browser-based interface
+- **Next.js Pages**: Server-side rendered pages
+- **React Components**: Reusable UI components
+- **State Management**: Client-side data handling
+- **API Client**: Axios/Fetch service for API calls
+
+#### Backend Layer
+- **API Routes**: Express endpoints
+- **Controllers**: Request handling logic
+- **Services**: Business logic
+- **Models**: Sequelize ORM models
+- **Database**: PostgreSQL data storage
+
+#### Authentication
+- JWT-based authentication
+- Secure token management
+- Protected routes
+
+#### External Services
+- Railway for PostgreSQL hosting
+
+
 
 ## Wireframes
 
