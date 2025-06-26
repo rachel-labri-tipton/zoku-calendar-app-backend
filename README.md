@@ -1,6 +1,6 @@
 # Zoku Calendar App
 
-A full-stack time tracking and calendar management application built with Next.js, Express, and PostgreSQL.
+Zoku is a full-stack time tracking and calendar management application built with Next.js, Express, and PostgreSQL. It's MVP version is deployed on Railway (backend) and Netlify (frontend). 
 
 ## Features
 
@@ -9,6 +9,9 @@ A full-stack time tracking and calendar management application built with Next.j
 - Todo list organization
 - Goal setting and progress tracking
 - Responsive design for all devices
+
+## Future Features
+
 
 ## Tech Stack
 
@@ -36,6 +39,18 @@ erDiagram
     Events ||--o{ TimeLogs : tracks
     Todos ||--o{ TimeLogs : tracks
 ```
+
+## Database Diagram
+
+![zoku app database diagram](./docs/db-diagrams.png)
+
+## Initial wireframes
+![zoku app wireframes v1](./docs/Wireframes-V2-1.png)
+![zoku app wireframes v2](./docs/Wireframes-V2-2.png)
+
+## Deployed application
+![deployed zoku app screen shot](./docs/Zoku-screenshot.png)
+
 
 ## Architecture
 
@@ -168,9 +183,24 @@ npm run test:integration
 
 [Add deployment instructions]
 
-## Contributing
 
-[Add contribution guidelines]
+## Origin Story
+
+Every project has a story. Here's some of the Zoku app's story. 
+
+As someone who loves to do lists and time management in both her personal and professional life, I wanted to create an application that initially reflects my personal aesthetics and my personal approach to time tracking. As a programmer, an artist, a writer, someone who has had a previous career as a translator, editor and university language instructor, I have learned to be intentional about my time. 
+
+I also wanted to build a project that I can have as a side project for awhile and that I can add features to over time. For example, I've built the backend with Express and know I can build I have ideas for customization. 
+
+As part of Women Coding Community's 2025 Summer/Fall mentee cohort, I decided to use my time (3 hours a month) with my mentor developing a side project that was not yet another tutorial project. 
+
+
+The backend deployment is [here].  
+
+The frontend deployment can be found here. 
+
+For a demo, you can use the `Demo Login` button and these user credentials: 
+
 
 ## License
 
