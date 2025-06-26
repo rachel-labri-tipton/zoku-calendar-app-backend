@@ -1,6 +1,8 @@
 # Zoku Calendar App
 
-Zoku is a full-stack time tracking and calendar management application built with Next.js, Express, and PostgreSQL. It's MVP version is deployed on Railway (backend) and Netlify (frontend). 
+Zoku is a full-stack time tracking and calendar management application built with Next.js, Express, and PostgreSQL. It's MVP version is deployed on Railway (backend) and Netlify (frontend).
+
+The MVP is a web application with responsive design. For the MVP of this project 
 
 ## Features
 
@@ -10,8 +12,18 @@ Zoku is a full-stack time tracking and calendar management application built wit
 - Goal setting and progress tracking
 - Responsive design for all devices
 
-## Future Features
+## Inspiration
 
+There are a lot of time and goal tracking apps out there. 
+
+Here are a few I've researched: 
+
+[any.do](https://www.any.do/)
+[The Fabulous](https://www.thefabulous.co/)
+[Habitica](https://habitica.com/)
+[monday.com](https://monday.com/)
+[Oak-Meditation & Breathing](https://apps.apple.com/fr/app/oak-meditation-breathing/id1210209691)
+[Dawn - Minimal Calendar](https://apps.apple.com/us/app/dawn-minimal-calendar/id1509374383)
 
 ## Tech Stack
 
@@ -19,7 +31,10 @@ Zoku is a full-stack time tracking and calendar management application built wit
 - Next.js 13+
 - React
 - TailwindCSS
+- Material UI
 - TypeScript
+- date-fns
+
 
 ### Backend
 - Express.js
@@ -189,7 +204,7 @@ npm run test:integration
 
 Every project has a story. Here's some of the Zoku app's story. 
 
-As someone who loves to do lists and time management in both her personal and professional life, I wanted to create an application that initially reflects my personal aesthetics and my personal approach to time tracking. As a programmer, an artist, a writer, someone who has had a previous career as a translator, editor and university language instructor, I have learned to be intentional about my time. 
+As someone who loves to do lists and time management in both her personal and professional life, I wanted to create an application that reflects my personal aesthetics and my personal approach to time tracking. The MVP does not fully capture all the nuances, but it's a start. As a programmer, an artist, a writer, someone who has had a previous career as a translator, editor and university language instructor, I have learned to be intentional about my time. 
 
 I also wanted to build a project that I can have as a side project for awhile and that I can add features to over time. For example, I've built the backend with Express and know I can build I have ideas for customization. 
 
