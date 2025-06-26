@@ -45,8 +45,9 @@ erDiagram
 ![zoku app database diagram](./docs/db-diagrams.png)
 
 ## Initial wireframes
-![zoku app wireframes v1](./docs/Wireframes-V2-1.png)
-![zoku app wireframes v2](./docs/Wireframes-V2-2.png)
+![zoku app wireframe v1](./docs/Version-One-wireframes.png)
+![zoku app wireframes v2-1](./docs/Wireframes-V2-1.png)
+![zoku app wireframes v2-2](./docs/Wireframes-V2-2.png)
 
 ## Deployed application
 ![deployed zoku app screen shot](./docs/Zoku-screenshot.png)
