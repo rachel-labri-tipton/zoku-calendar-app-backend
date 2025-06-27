@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const { TodoList, Todo } = require('../../models');
+const auth = require('../middleware/auth.middleware');
 
+router.use(auth);
 
 // Create empty TodoList
 router.post('/empty', async (req, res) => {
@@ -137,5 +139,56 @@ router.delete('/:id', async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
+// Add single Todo to existing TodoList
+router.post('/list/:todoListId/todo', async (req, res) => {
+  try {
+    // First verify the TodoList exists and belongs to user
+    const todoList = await TodoList.findOne({
+      where: { 
+        id: req.params.todoListId,
+        userId: req.user.id
+      }
+    });
+
+    if (!todoList) {
+      return res.status(404).json({ error: 'TodoList not found' });
+    }
+
+    // Create the new todo
+    const todo = await Todo.create({
+      ...req.body,
+      todoListId: todoList.id,
+      userId: req.user.id
+    });
+
+    res.status(201).json(todo);
+  } catch (error) {
+    console.error('Add todo error:', error);
+    res.status(400).json({ error: error.message });
+  }
+});
+
+router.put('/item/:todoId', async (req, res) => {
+  try {
+    const todo = await Todo.findOne({
+      where: { 
+        id: req.params.todoId,
+        userId: req.user.id
+      }
+    });
+
+    if (!todo) {
+      return res.status(404).json({ error: 'Todo item not found' });
+    }
+
+    await todo.update(req.body);
+    res.json(todo);
+  } catch (error) {
+    console.error('Update todo error:', error);
+    res.status(400).json({ error: error.message });
+  }
+});
+
 
 module.exports = router;

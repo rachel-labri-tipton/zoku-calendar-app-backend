@@ -3,34 +3,48 @@ const router = express.Router();
 const { Event } = require('../../models');
 const auth = require('../middleware/auth.middleware');
 
+router.use(auth);
+
 // Create Event
 router.post('/', async (req, res) => {
   try {
+    if (!req.user || !req.user.id) {
+      return res.status(401).json({ error: 'User not authenticated' });
+    }
+
     const event = await Event.create({
       ...req.body,
-      userId: req.userId
+      userId: req.user.id
     });
+    
     res.status(201).json(event);
   } catch (error) {
+    console.error('Create event error:', error);
     res.status(400).json({ error: error.message });
   }
 });
 
-// Get all events for current user
+// Get all events
 router.get('/', async (req, res) => {
   try {
+    if (!req.user || !req.user.id) {
+      return res.status(401).json({ error: 'User not authenticated' });
+    }
+
     const events = await Event.findAll({
-      where: { userId: req.userId },
+      where: { userId: req.user.id },
       order: [['startDate', 'ASC']]
     });
+    
     res.json(events);
   } catch (error) {
+    console.error('Get events error:', error);
     res.status(500).json({ error: error.message });
   }
 });
 
-// Get single event
-router.get('/:id', async (req, res) => {
+// Get event by ID
+router.get('/:id', async (req, res) => { 
   try {
     const event = await Event.findOne({
       where: { 
@@ -43,9 +57,10 @@ router.get('/:id', async (req, res) => {
     }
     res.json(event);
   } catch (error) {
+    console.error('Get event by ID error:', error);
     res.status(500).json({ error: error.message });
   }
-});
+})
 
 // Update event
 router.put('/:id', async (req, res) => {

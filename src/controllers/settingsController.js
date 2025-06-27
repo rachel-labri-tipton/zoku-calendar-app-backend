@@ -4,7 +4,7 @@ const settingsController = {
   async getSettings(req, res) {
     try {
       const settings = await Settings.findOne({
-        where: { userId: req.userId }
+        where: { userId: req.user.id }
       });
       res.json(settings);
     } catch (error) {
@@ -15,7 +15,7 @@ const settingsController = {
   async updateSettings(req, res) {
     try {
       const [settings] = await Settings.findOrCreate({
-        where: { userId: req.userId },
+        where: { userId: req.user.id },
         defaults: {
           theme: 'light',
           notifications: true,
