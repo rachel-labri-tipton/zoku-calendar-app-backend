@@ -2,7 +2,7 @@
 
 Zoku is a full-stack time tracking and calendar management application built with Next.js, Express, and PostgreSQL. It's MVP version is deployed on Railway (backend) and Netlify (frontend). 
 
-The MVP is a web application with responsive design. For the MVP of this project I've tried for the following features:  
+The MVP is a web application with responsive design. For the MVP of this project I'm tried for the following features: 
 
 ## Features
 
@@ -18,12 +18,12 @@ There are a lot of time and goal tracking apps out there.
 
 Here are a few I've researched: 
 
-[any.do](https://www.any.do/)
-[The Fabulous](https://www.thefabulous.co/)
-[Habitica](https://habitica.com/)
-[monday.com](https://monday.com/)
-[Oak-Meditation & Breathing](https://apps.apple.com/fr/app/oak-meditation-breathing/id1210209691)
-[Dawn - Minimal Calendar](https://apps.apple.com/us/app/dawn-minimal-calendar/id1509374383)
+- [any.do](https://www.any.do/)
+- [The Fabulous](https://www.thefabulous.co/)
+- [Habitica](https://habitica.com/)
+- [monday.com](https://monday.com/)
+- [Oak-Meditation & Breathing](https://apps.apple.com/fr/app/oak-meditation-breathing/id1210209691)
+- [Dawn - Minimal Calendar](https://apps.apple.com/us/app/dawn-minimal-calendar/id1509374383)
 
 ## Tech Stack
 
@@ -42,18 +42,6 @@ Here are a few I've researched:
 - Sequelize ORM
 - JWT Authentication
 
-## Database Schema
-
-```mermaid
-erDiagram
-    Users ||--o{ Events : creates
-    Users ||--o{ TodoLists : owns
-    Users ||--o{ Categories : customizes
-    TodoLists ||--o{ Todos : contains
-    Categories ||--o{ TimeLogs : tracks
-    Events ||--o{ TimeLogs : tracks
-    Todos ||--o{ TimeLogs : tracks
-```
 
 ## Database Diagram
 
@@ -64,7 +52,7 @@ erDiagram
 ![zoku app wireframes v2-1](./docs/Wireframes-V2-1.png)
 ![zoku app wireframes v2-2](./docs/Wireframes-V2-2.png)
 
-## Deployed application
+## Running application
 ![deployed zoku app screen shot](./docs/Zoku-screenshot.png)
 
 
@@ -123,20 +111,6 @@ graph TD
 - Railway for PostgreSQL hosting
 
 
-
-## Wireframes
-
-### Desktop Views
-- [ ] Calendar View
-- [ ] Time Tracking Dashboard
-- [ ] Category Management
-- [ ] Todo Lists
-
-### Mobile Views
-- [ ] Mobile Calendar
-- [ ] Time Entry
-- [ ] Task Management
-
 ## API Documentation
 
 ### Authentication
@@ -149,6 +123,7 @@ graph TD
 - POST /events
 - PUT /events/:id
 - DELETE /events/:id
+
 
 ### Categories
 - GET /categories
@@ -236,6 +211,9 @@ The backend deployment is [here].
 For the purposes of this project, I'm running the frontend locally. 
 
 For a demo, you can use the `Demo Login` button and these user credentials: 
+
+`demo.user@example.com
+Password123!`
 
 
 ## License
