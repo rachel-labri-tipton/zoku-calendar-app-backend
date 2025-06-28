@@ -1,8 +1,8 @@
 # Zoku Calendar App
 
-Zoku is a full-stack time tracking and calendar management application built with Next.js, Express, and PostgreSQL. It's MVP version is deployed on Railway (backend) and Netlify (frontend).
+Zoku is a full-stack time tracking and calendar management application built with Next.js, Express, and PostgreSQL. It's MVP version is deployed on Railway (backend) and Netlify (frontend). 
 
-The MVP is a web application with responsive design. For the MVP of this project 
+The MVP is a web application with responsive design. For the MVP of this project I've tried for the following features:  
 
 ## Features
 
@@ -185,19 +185,39 @@ cp .env.example .env
 npm run dev
 ```
 
-## Testing
+# Running the Next.js Frontend
 
-```bash
-# Run unit tests
-npm test
+1. Clone the frontend repository (if separate):
+   ```bash
+   git clone https://github.com/yourusername/zoku-next-frontend-app.git
+   cd zoku-next-frontend-app
+   ```
 
-# Run integration tests
-npm run test:integration
-```
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+3. Create a `.env.local` file for environment variables (see `.env.example` if provided).
+
+4. Start the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser to view the app.
+
+**Note:**  
+- Make sure your backend server is running and the frontend `.env.local` is configured to point to the correct API URL.
+- For production, use `npm run build` and `npm start`.
 
 ## Deployment
 
-[Add deployment instructions]
+[Instructions to be added]
 
 
 ## Origin Story
@@ -213,7 +233,7 @@ As part of Women Coding Community's 2025 Summer/Fall mentee cohort, I decided to
 
 The backend deployment is [here].  
 
-The frontend deployment can be found here. 
+For the purposes of this project, I'm running the frontend locally. 
 
 For a demo, you can use the `Demo Login` button and these user credentials: 
 
