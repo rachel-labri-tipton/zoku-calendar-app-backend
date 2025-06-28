@@ -141,7 +141,7 @@ graph TD
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/zoku-calendar.git
+git clone https://github.com/rachel-labri-tipton/zoku-calendar-app-backend.git
 ```
 
 2. Install dependencies:
