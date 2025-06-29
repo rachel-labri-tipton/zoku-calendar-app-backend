@@ -6,7 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/app.js",
-    "dev": "nodemon --watch src/app.js"
+    "dev": "nodemon --watch src/app.js",
+    "seed:production": "node seeders/seedProduction.js",
+    "db:reset": "node seeders/resetDb.js",
+    "db:reset:prod": "NODE_ENV=production node seeders/resetDb.js"
   },
   "repository": {
     "type": "git",
