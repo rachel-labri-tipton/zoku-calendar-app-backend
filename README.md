@@ -39,6 +39,39 @@ As a programmer, an artist, a writer, someone who has had a previous career as a
 
 I also wanted to build a project that I can have as a side project for awhile and that I can add features to over time. For example, I've built the backend with Express but would be interested in converting that to NestJS in the future. 
 
+The MVP is a web application with responsive design. Here are the demo videos:
+
+![Demo of Zoku Calendar App](./docs/zoku-calendar-video-1.gif)
+
+![Demo of Zoku Calendar App Responsive design](./docs/zoku-app-video-responsive.gif)
+
+### Deployment
+
+I've split the front and the backend into two different repositories.
+
+The [backend](https://github.com/rachel-labri-tipton/zoku-calendar-app-backend.git) is deployed with Railway. 
+
+All API endpoints start here: `https://zoku-api.up.railway.app/`. 
+
+The [frontend](https://github.com/rachel-labri-tipton/zoku-next-frontend-app.git), in the future, will be deployed either using Netlify or Vercel. 
+
+For a demo, you can use the `Demo Login` button and these user credentials: 
+
+`demo.user@example.com
+Password123!`
+
+## Origin Story
+
+Every project has a story. Here's some more of the Zoku app's story. 
+
+As part of Women Coding Community's 2025 Summer/Fall mentee cohort, I decided to use my time (3 hours a month) with my mentor  developing a side project that was not yet another tutorial project. 
+
+As someone who loves to do lists and time management in both her personal and professional life, I wanted to create an application that reflects my personal aesthetics and my personal approach to time tracking. The MVP does not fully capture all the nuances, but it's a start. 
+
+As a programmer, an artist, a writer, someone who has had a previous career as a translator, editor and university language instructor, in order to get my life's work done, I have learned to be intentional about my time. 
+
+I also wanted to build a project that I can have as a side project for awhile and that I can add features to over time. For example, I've built the backend with Express but would be interested in converting that to NestJS in the future. 
+
 
 ## Features
 
