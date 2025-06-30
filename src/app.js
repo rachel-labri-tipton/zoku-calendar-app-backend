@@ -43,7 +43,7 @@ const settingsRoutes = require('./routes/settings');
 const categoryRoutes = require('./routes/categories');
 const timeLogRoutes = require('./routes/timeLogs');
 
-// Use routes
+// Use routesgit a
 app.use('/auth', authRoutes);
 app.use('/events', eventRoutes);
 app.use('/todos', todoListRoutes);
