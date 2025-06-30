@@ -20,7 +20,7 @@ The [backend](https://github.com/rachel-labri-tipton/zoku-calendar-app-backend.g
 
 All API endpoints start here: `https://zoku-api.up.railway.app/`. 
 
-The [frontend](https://github.com/rachel-labri-tipton/zoku-next-frontend-app.git), in the future, will be deployed either using Netlify or Vercel. 
+The [frontend](https://github.com/rachel-labri-tipton/zoku-next-frontend-app.git) is deployed using Vercel: [https://zoku-next-frontend-app.vercel.app](https://zoku-next-frontend-app.vercel.app)
 
 For a demo, you can use the `Demo Login` button and these user credentials: 
 
